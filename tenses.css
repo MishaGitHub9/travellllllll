@@ -1,0 +1,706 @@
+/* Tenses Page Styles */
+.tenses-intro {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+}
+
+.intro-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.intro-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.intro-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.progress-container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.progress-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.progress-percentage {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.progress-bar {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+/* Tense Sections */
+.tense-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.tense-section.hidden {
+    display: none;
+}
+
+.tense-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.tense-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #10b981;
+    color: white;
+}
+
+.status-badge.locked {
+    background-color: #6b7280;
+}
+
+/* Tense Explanation */
+.tense-explanation {
+    margin-bottom: 4rem;
+}
+
+.explanation-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.explanation-header h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.explanation-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.tense-markers {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #bae6fd;
+}
+
+.tense-markers h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #0369a1;
+}
+
+.tense-markers p {
+    font-size: 1rem;
+    color: #0c4a6e;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.tense-markers strong {
+    color: #1e40af;
+    font-weight: 700;
+}
+
+.usage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.usage-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.usage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.usage-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.usage-card h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.usage-card p {
+    color: #6b7280;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Examples Section */
+.examples-section {
+    margin-bottom: 3rem;
+}
+
+.examples-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #1f2937;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.example-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease;
+}
+
+.example-card:hover {
+    transform: translateY(-5px);
+}
+
+.example-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.example-header h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.site-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: #3b82f6;
+    color: white;
+}
+
+.hotel-example .site-badge {
+    background-color: #3b82f6;
+}
+
+.apartment-example .site-badge {
+    background-color: #ef4444;
+}
+
+.restaurant-example .site-badge {
+    background-color: #10b981;
+}
+
+.example-sentence {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+.example-translation {
+    color: #6b7280;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.grammar-note {
+    background-color: #fef3c7;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border-left: 4px solid #f59e0b;
+    font-size: 0.9rem;
+    color: #92400e;
+}
+
+/* Practice Section */
+.practice-section {
+    margin-bottom: 3rem;
+}
+
+.practice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.practice-header h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.practice-stats {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.completed-count {
+    color: #3b82f6;
+}
+
+.practice-progress {
+    margin-bottom: 2rem;
+}
+
+.practice-progress .progress-bar {
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.practice-progress .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.progress-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.progress-dot.current {
+    background-color: #3b82f6;
+    transform: scale(1.2);
+}
+
+.progress-dot.correct {
+    background-color: #10b981;
+}
+
+.progress-dot.incorrect {
+    background-color: #ef4444;
+}
+
+.practice-exercises {
+    display: grid;
+    gap: 2rem;
+}
+
+.exercise-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.exercise-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.exercise-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.answer-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.answer-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: #374151;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.answer-btn:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.answer-btn.correct {
+    background-color: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+.answer-btn.incorrect {
+    background-color: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.answer-btn.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.feedback {
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.feedback.correct {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid #10b981;
+}
+
+.feedback.incorrect {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.navigation-buttons .btn {
+    min-width: 150px;
+}
+
+.navigation-buttons .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Results Section */
+.practice-results {
+    text-align: center;
+    padding: 3rem;
+}
+
+.results-card {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.results-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1f2937;
+}
+
+.results-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #3b82f6;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.results-message {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.results-message .excellent {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 2px solid #10b981;
+}
+
+.results-message .good {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border: 2px solid #3b82f6;
+}
+
+.results-message .average {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 2px solid #f59e0b;
+}
+
+.results-message .needs-work {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 2px solid #ef4444;
+}
+
+/* Exercise improvements */
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.exercise-header h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.exercise-question {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: #374151;
+    line-height: 1.6;
+    padding: 1.5rem;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+/* Locked Content */
+.locked-content {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    border: 2px dashed #d1d5db;
+}
+
+.locked-content p {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .intro-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .intro-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .intro-text p {
+        font-size: 1.1rem;
+    }
+    
+    .usage-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .explanation-header h3 {
+        font-size: 1.8rem;
+    }
+    
+    .tense-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .tense-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .examples-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .answer-options {
+        flex-direction: column;
+    }
+    
+    .answer-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .navigation-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .tense-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .practice-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .practice-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .results-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .exercise-question {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+    
+    .example-card {
+        padding: 1rem;
+    }
+    
+    .exercise-card {
+        padding: 1.5rem;
+    }
+    
+    .example-sentence {
+        font-size: 1rem;
+    }
+} 

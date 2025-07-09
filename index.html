@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelingo - Вивчення англійської для подорожей</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+        }
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-30px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateX(0); filter: blur(0px); }
+        }
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(30px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateX(0); filter: blur(0px); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
+        .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+        .delay-900 { animation-delay: 0.9s; }
+        .delay-1000 { animation-delay: 1.0s; }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+        }
+        
+        @keyframes slide-up-fade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes scale-in {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-border {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3));
+            padding: 1px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .quiz-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .quiz-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .option-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .option-card:hover::before {
+            left: 100%;
+        }
+        
+        .option-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateX(5px);
+        }
+        
+        .correct-answer {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+            border-color: rgba(34, 197, 94, 0.4);
+            animation: pulse-glow 2s ease-in-out;
+        }
+        
+        .wrong-answer {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+            border-color: rgba(239, 68, 68, 0.3);
+            opacity: 0.6;
+        }
+        
+        .question-text {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+        
+        .explanation-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            backdrop-filter: blur(15px);
+            animation: slide-up-fade 0.5s ease-out;
+        }
+        .quiz-glass {
+            background: rgba(30, 27, 75, 0.55);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            border: 1.5px solid rgba(99, 102, 241, 0.18);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            animation: scale-in 0.6s cubic-bezier(0.4,0,0.2,1);
+        }
+        .quiz-gradient-border {
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) 1;
+            border-radius: 1.5rem;
+        }
+        .quiz-option-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.07);
+            border-radius: 1rem;
+            border: 1.5px solid rgba(255,255,255,0.10);
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 500;
+            padding: 0.9rem 1.2rem;
+            margin-bottom: 0.7rem;
+            cursor: pointer;
+            transition: background 0.25s, border 0.25s, box-shadow 0.25s, color 0.25s;
+            box-shadow: 0 2px 8px 0 rgba(99,102,241,0.07);
+        }
+        .quiz-option-btn.correct {
+            background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+            color: #ede9fe;
+            border-color: #a855f7;
+            box-shadow: 0 4px 16px 0 rgba(99,102,241,0.13);
+        }
+        .quiz-option-btn.wrong {
+            background: rgba(99,102,241,0.13);
+            color: #c7bfff;
+            border-color: #6366f1;
+            opacity: 0.85;
+        }
+        .quiz-option-btn .quiz-letter {
+            width: 2.1rem;
+            height: 2.1rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-right: 0.2rem;
+        }
+        .quiz-option-btn.correct .quiz-letter {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+        .quiz-option-btn.wrong .quiz-letter {
+            background: rgba(99,102,241,0.18);
+            color: #bdb4f7;
+        }
+        .quiz-option-btn:hover {
+            background: rgba(99,102,241,0.13);
+            border-color: #6366f1;
+            color: #fff;
+        }
+        .quiz-explanation {
+            background: rgba(30, 27, 75, 0.45);
+            border-radius: 1rem;
+            border: 1.5px solid rgba(99, 102, 241, 0.13);
+            box-shadow: 0 2px 12px 0 rgba(99,102,241,0.10);
+            padding: 1.1rem 1.2rem;
+            margin-top: 1.2rem;
+            animation: slide-up-fade 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .quiz-explanation .icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-right: 0.7rem;
+        }
+        .quiz-explanation .title {
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.08rem;
+        }
+        .quiz-explanation .text {
+            color: #e0e7ff;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+        }
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.2rem;
+        }
+        .section-bg-tenses {
+            background: radial-gradient(ellipse at 70% 30%, rgba(99,102,241,0.25) 0%, transparent 70%),
+                        radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.18) 0%, transparent 70%),
+                        linear-gradient(135deg, #232046 0%, #18122b 100%);
+        }
+        .section-bg-vocab {
+            background: radial-gradient(ellipse at 30% 20%, rgba(168,85,247,0.22) 0%, transparent 70%),
+                        radial-gradient(ellipse at 80% 80%, rgba(99,102,241,0.15) 0%, transparent 70%),
+                        linear-gradient(135deg, #201a3a 0%, #18122b 100%);
+        }
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            margin: 2.5rem 0 2.5rem 0;
+            align-items: flex-start;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.13rem;
+            color: #ede9fe;
+            font-weight: 500;
+            background: rgba(99,102,241,0.09);
+            border-radius: 0.8rem;
+            padding: 0.7rem 1.2rem;
+            box-shadow: 0 2px 12px 0 rgba(99,102,241,0.07);
+        }
+        .feature-item .icon {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            border-radius: 50%;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 2px 8px 0 rgba(99,102,241,0.13);
+        }
+        .section-illustration {
+            filter: drop-shadow(0 8px 32px rgba(99,102,241,0.18));
+            animation: float 5s ease-in-out infinite;
+        }
+        .section-card {
+            background: rgba(30, 27, 75, 0.55);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            border: 2px solid rgba(99, 102, 241, 0.18);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 3rem 2.5rem;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .section-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.18rem;
+            font-weight: 600;
+            padding: 1.1rem 2.2rem;
+            border-radius: 1.2rem;
+            background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+            color: #fff;
+            box-shadow: 0 4px 16px 0 rgba(99,102,241,0.13);
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .section-btn:hover {
+            background: linear-gradient(90deg, #a855f7 0%, #6366f1 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px 0 rgba(99,102,241,0.18);
+        }
+        .min-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3.5rem 0 3.5rem 0;
+        }
+        .mini-block {
+            background: rgba(24, 18, 43, 0.98);
+            border-radius: 2.2rem;
+            box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.13);
+            padding: 3.5rem 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+        }
+        .mini-block .icon {
+            font-size: 2.7rem;
+            margin-bottom: 0.5rem;
+            color: #a855f7;
+            align-self: flex-start;
+        }
+        .mini-block .title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2em;
+        }
+        .mini-block .subtitle {
+            font-size: 1.15rem;
+            color: #a3a3b6;
+            font-weight: 500;
+            margin-bottom: 0.7em;
+        }
+        .mini-block .desc {
+            font-size: 1.18rem;
+            color: #e0e7ff;
+            margin-bottom: 0.7em;
+        }
+        .mini-block .mini-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7em;
+            margin-bottom: 1.2em;
+        }
+        .mini-block .mini-list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7em;
+            font-size: 1.08rem;
+            color: #bdb4f7;
+        }
+        .mini-block .mini-list-item .mini-list-icon {
+            font-size: 1.2rem;
+            color: #6366f1;
+        }
+        .mini-block .mini-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6em;
+            font-size: 1.13rem;
+            font-weight: 600;
+            padding: 1.1rem 2.2rem;
+            border-radius: 1.2rem;
+            background: #232046;
+            color: #fff;
+            box-shadow: 0 4px 16px 0 rgba(99,102,241,0.10);
+            border: 1.5px solid #6366f1;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .mini-block .mini-btn:hover {
+            background: #2d2560;
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px 0 rgba(99,102,241,0.18);
+        }
+        @media (max-width: 700px) {
+            .mini-block {
+                padding: 2.2rem 1.1rem;
+                border-radius: 1.2rem;
+            }
+            .min-section {
+                padding: 2rem 0 2rem 0;
+            }
+        }
+        body.hero-bg {
+            background: radial-gradient(ellipse at 70% 30%, rgba(99,102,241,0.22) 0%, transparent 70%),
+                        radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.18) 0%, transparent 70%),
+                        linear-gradient(135deg, #18122b 0%, #232046 100%);
+        }
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 1.1rem;
+            line-height: 1.1;
+        }
+        .hero-title .accent {
+            background: linear-gradient(90deg, #6366f1 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            text-align: center;
+            color: #e0e7ff;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat .stat-value {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+        .hero-stat .stat-label {
+            color: #a3a3b6;
+            font-size: 1.08rem;
+            margin-top: 0.2em;
+        }
+        .hero-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-card {
+            background: rgba(24, 18, 43, 0.98);
+            border-radius: 2.2rem;
+            box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.13);
+            padding: 2.5rem 2.2rem 2rem 2.2rem;
+            min-width: 260px;
+            max-width: 320px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .hero-card:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 12px 40px 0 rgba(99,102,241,0.18);
+        }
+        .hero-card .card-icon {
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            color: #6366f1;
+        }
+        .hero-card .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2em;
+            text-align: center;
+        }
+        .hero-card .card-desc {
+            font-size: 1.08rem;
+            color: #e0e7ff;
+            text-align: center;
+        }
+        .hero-card .card-btn {
+            margin-top: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+            font-size: 1.08rem;
+            font-weight: 600;
+            padding: 0.9rem 2rem;
+            border-radius: 1.2rem;
+            background: #232046;
+            color: #fff;
+            box-shadow: 0 4px 16px 0 rgba(99,102,241,0.10);
+            border: 1.5px solid #6366f1;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .hero-card .card-btn:hover {
+            background: #2d2560;
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px 0 rgba(99,102,241,0.18);
+        }
+        @media (max-width: 900px) {
+            .hero-cards {
+                flex-direction: column;
+                gap: 2.2rem;
+                align-items: center;
+            }
+            .hero-stats {
+                gap: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body class="bg-black font-sans antialiased text-white overflow-x-hidden" style="font-family: 'Inter', sans-serif;">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)]"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">T</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-800">Travelingo</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-indigo-600 hover:text-indigo-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-indigo-600">Головна</a>
+                    <a href="tenses.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Часи</a>
+                    <a href="vocabulary.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Словник</a>
+                    <a href="practice.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Практика</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 p-2 rounded-md">
+                        <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-lg transform -translate-y-full transition-transform duration-300 ease-in-out">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="bg-indigo-50 border-indigo-500 text-indigo-700 block px-3 py-2 rounded-md text-base font-medium border-l-4">Головна</a>
+                <a href="tenses.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Часи</a>
+                <a href="vocabulary.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Словник</a>
+                <a href="practice.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Практика</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="relative z-10">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+            <!-- Main Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+                
+                <!-- Hero Content - Spans 6 columns -->
+                <div class="lg:col-span-6 opacity-0 animate-slide-in-left delay-300" style="opacity: 1;">
+
+                    <h1 class="sm:text-7xl xl:text-8xl leading-none text-6xl font-medium tracking-tighter mb-8">
+                        <span class="block text-white">Вивчайте англійську</span>
+                        <span class="block gradient-text">для подорожей</span>
+                    </h1>
+
+                    <p class="text-xl text-white/70 mb-10 max-w-lg leading-relaxed">
+                        Практичні фрази та граматика для реальних ситуацій у подорожі.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+                        <a href="tenses.html" class="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium rounded-3xl transition-all duration-300 shadow-xl shadow-indigo-500/25 transform hover:scale-105">
+                            Почати з часів
+                        </a>
+                        <a href="vocabulary.html" class="px-8 py-4 glass border border-white/20 hover:border-white/40 text-white font-medium rounded-3xl transition-all duration-300 backdrop-blur-sm">
+                            Словник
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Interactive Quiz Section - Spans 6 columns -->
+                <div class="lg:col-span-6 opacity-0 animate-slide-in-right delay-500" style="opacity: 1;">
+                    <div class="flex items-center justify-center h-full mt-8 lg:-mt-20">
+                        <div id="interactive-quiz" class="w-full max-w-md">
+                            <!-- Quiz content will be dynamically updated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section (Inspired by Reference) -->
+            <section style="padding-top: 5.5rem; padding-bottom: 5.5rem;">
+                <div class="hero-title">
+                    Вивчай <span class="accent">англійську</span> для подорожей
+                </div>
+                <div class="hero-desc">
+                    Практичні фрази, граматика та словник для реальних ситуацій у подорожі. Обирай свій стиль навчання та отримуй максимум користі!
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-value">3+</div>
+                        <div class="stat-label">ключові часи</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">1000+</div>
+                        <div class="stat-label">корисних фраз</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">задоволених користувачів</div>
+                    </div>
+                </div>
+                <div class="hero-cards">
+                    <div class="hero-card">
+                        <span class="card-icon">⏳</span>
+                        <div class="card-title">Часи</div>
+                        <div class="card-desc">Вивчи основні часи англійської мови для впевненого спілкування у подорожах.</div>
+                        <a href="tenses.html" class="card-btn">Дізнатися більше <span>→</span></a>
+                    </div>
+                    <div class="hero-card">
+                        <span class="card-icon">📖</span>
+                        <div class="card-title">Словник</div>
+                        <div class="card-desc">Зручний словник для швидкого пошуку потрібних фраз і слів у будь-якій ситуації.</div>
+                        <a href="vocabulary.html" class="card-btn">Дізнатися більше <span>→</span></a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="border-t border-white/10 mt-32">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+                <div class="text-center">
+                    <p class="text-white/60">&copy; 2024 Travelingo. Вивчення англійської для подорожей.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/quest.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            // Toggle menu visibility
+            mobileMenu.classList.toggle('-translate-y-full');
+            mobileMenu.classList.toggle('translate-y-0');
+            
+            // Toggle icons
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const hamburgerIcon = document.getElementById('hamburger-icon');
+                const closeIcon = document.getElementById('close-icon');
+                
+                mobileMenu.classList.add('-translate-y-full');
+                mobileMenu.classList.remove('translate-y-0');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.opacity-0').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Interactive Quiz functionality
+        const quizData = [
+            {
+                question: "Як сказати 'Я їду в Лондон' англійською?",
+                options: [
+                    "I am going to London",
+                    "I go to London", 
+                    "I will go to London"
+                ],
+                correct: 0
+            },
+            {
+                question: "Що означає 'I have a reservation'?",
+                options: [
+                    "У мене є бронювання",
+                    "Я хочу забронювати",
+                    "Я скасую бронювання"
+                ],
+                correct: 0
+            },
+            {
+                question: "Який час використовується для фактів?",
+                options: [
+                    "Present Continuous",
+                    "Present Simple",
+                    "Future Simple"
+                ],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function updateQuiz() {
+            const quizContainer = document.getElementById('quick-quiz');
+            if (!quizContainer) return;
+
+            const question = quizData[currentQuestion];
+            
+            const quizHTML = `
+                <div class="glass rounded-2xl p-6 border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-white/60">Питання ${currentQuestion + 1}/${quizData.length}</span>
+                        <div class="flex gap-1">
+                            ${quizData.map((_, index) => 
+                                `<div class="w-2 h-2 ${index <= currentQuestion ? 'bg-green-400' : 'bg-white/20'} rounded-full"></div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <p class="text-white font-medium mb-6">${question.question}</p>
+                    
+                    <div class="space-y-3">
+                        ${question.options.map((option, index) => `
+                            <button onclick="selectAnswer(${index})" class="w-full p-4 text-left bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-2xl transition-all duration-300 group">
+                                <span class="text-white/80 group-hover:text-white">${String.fromCharCode(65 + index)}) ${option}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="w-full bg-white/10 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-green-500 to-emerald-600 h-2 rounded-full transition-all duration-500" style="width: ${((currentQuestion + 1) / quizData.length) * 100}%"></div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="text-center p-4 glass rounded-2xl border border-white/10">
+                        <div class="text-2xl font-bold text-white mb-1">${score}</div>
+                        <div class="text-xs text-white/60">правильних</div>
+                    </div>
+                    <div class="text-center p-4 glass rounded-2xl border border-white/10">
+                        <div class="text-2xl font-bold text-white mb-1">${Math.round((score / (currentQuestion + 1)) * 100)}%</div>
+                        <div class="text-xs text-white/60">успішність</div>
+                    </div>
+                </div>
+            `;
+            
+            quizContainer.innerHTML = quizHTML;
+            
+            // Auto-show correct answer after 4 seconds if user doesn't answer
+            setTimeout(() => {
+                const buttons = quizContainer.querySelectorAll('button');
+                const anyButtonClicked = Array.from(buttons).some(btn => btn.disabled);
+                
+                if (!anyButtonClicked) {
+                    showCorrectAnswer(-1); // -1 means no user selection
+                    
+                    setTimeout(() => {
+                        currentQuestion++;
+                        
+                        if (currentQuestion < quizData.length) {
+                            updateQuiz();
+                        } else {
+                            showResults();
+                        }
+                    }, 2000);
+                }
+            }, 4000);
+        }
+
+        function selectAnswer(selectedIndex) {
+            const question = quizData[currentQuestion];
+            
+            if (selectedIndex === question.correct) {
+                score++;
+            }
+            
+            // Show correct answer for 2 seconds before moving to next question
+            showCorrectAnswer(selectedIndex);
+            
+            setTimeout(() => {
+                currentQuestion++;
+                
+                if (currentQuestion < quizData.length) {
+                    updateQuiz();
+                } else {
+                    showResults();
+                }
+            }, 2000);
+        }
+
+        function showCorrectAnswer(selectedIndex) {
+            const quizContainer = document.getElementById('quick-quiz');
+            if (!quizContainer) return;
+            
+            const question = quizData[currentQuestion];
+            const isCorrect = selectedIndex === question.correct;
+            const noUserSelection = selectedIndex === -1;
+            
+            // Update the quiz container to show the correct answer
+            const optionsContainer = quizContainer.querySelector('.space-y-3');
+            if (optionsContainer) {
+                const buttons = optionsContainer.querySelectorAll('button');
+                
+                buttons.forEach((button, index) => {
+                    button.disabled = true;
+                    button.style.pointerEvents = 'none';
+                    
+                    if (index === question.correct) {
+                        button.classList.add('bg-green-500/20', 'border-green-500/40');
+                        button.innerHTML = `<span class="text-green-400">✓ ${String.fromCharCode(65 + index)}) ${question.options[index]}</span>`;
+                    } else if (index === selectedIndex && !isCorrect && !noUserSelection) {
+                        button.classList.add('bg-red-500/20', 'border-red-500/40');
+                        button.innerHTML = `<span class="text-red-400">✗ ${String.fromCharCode(65 + index)}) ${question.options[index]}</span>`;
+                    } else {
+                        button.classList.add('opacity-50');
+                    }
+                });
+            }
+            
+            // Add explanation
+            const explanationDiv = document.createElement('div');
+            explanationDiv.className = 'mt-4 p-4 bg-white/5 border border-white/10 rounded-2xl';
+            explanationDiv.innerHTML = `
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-2xl">${isCorrect ? '🎉' : noUserSelection ? '⏰' : '💡'}</span>
+                    <span class="text-white font-medium">${isCorrect ? 'Правильно!' : noUserSelection ? 'Час вийшов!' : 'Правильна відповідь:'}</span>
+                </div>
+                <p class="text-white/80 text-sm">${getExplanation(currentQuestion)}</p>
+            `;
+            
+            quizContainer.appendChild(explanationDiv);
+        }
+
+        function getExplanation(questionIndex) {
+            const explanations = [
+                "Present Continuous використовується для дій, що відбуваються зараз або планованих на майбутнє.",
+                "Have + reservation означає 'мати бронювання' - це фраза, яку часто використовують в подорожах.",
+                "Present Simple використовується для фактів, істин та регулярних дій."
+            ];
+            return explanations[questionIndex] || "Це правильна відповідь!";
+        }
+
+        function showResults() {
+            const quizContainer = document.getElementById('quick-quiz');
+            if (!quizContainer) return;
+            
+            const percentage = Math.round((score / quizData.length) * 100);
+            
+            quizContainer.innerHTML = `
+                <div class="glass rounded-2xl p-6 border border-white/10 text-center">
+                    <div class="text-4xl mb-4">🎉</div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Тест завершено!</h3>
+                    <p class="text-white/60 mb-6">Ваш результат: ${score}/${quizData.length}</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="text-center p-4 glass rounded-2xl border border-white/10">
+                            <div class="text-2xl font-bold text-white mb-1">${score}</div>
+                            <div class="text-xs text-white/60">правильних</div>
+                        </div>
+                        <div class="text-center p-4 glass rounded-2xl border border-white/10">
+                            <div class="text-2xl font-bold text-white mb-1">${percentage}%</div>
+                            <div class="text-xs text-white/60">успішність</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="restartQuiz()" class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-medium rounded-2xl transition-all duration-300 shadow-xl shadow-green-500/25 transform hover:scale-105">
+                        Спробувати ще раз
+                    </button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            updateQuiz();
+        }
+
+        // Interactive Quiz Data
+        const interactiveQuizData = [
+            {
+                category: "Граматика",
+                question: "Як правильно сказати 'Я їду в аеропорт'?",
+                options: [
+                    "I am going to the airport",
+                    "I go to the airport",
+                    "I will go to the airport"
+                ],
+                correct: 0,
+                explanation: "Present Continuous використовується для дій, що відбуваються зараз або планованих на майбутнє."
+            },
+            {
+                category: "Лексика",
+                question: "Що означає 'I have a reservation'?",
+                options: [
+                    "У мене є бронювання",
+                    "Я хочу забронювати",
+                    "Я скасую бронювання"
+                ],
+                correct: 0,
+                explanation: "Have + reservation означає 'мати бронювання' - це фраза, яку часто використовують в подорожах."
+            },
+            {
+                category: "Граматика",
+                question: "Який час використовується для фактів?",
+                options: [
+                    "Present Continuous",
+                    "Present Simple",
+                    "Future Simple"
+                ],
+                correct: 1,
+                explanation: "Present Simple використовується для фактів, істин та регулярних дій."
+            },
+            {
+                category: "Лексика",
+                question: "Як сказати 'Де знаходиться вокзал?'",
+                options: [
+                    "Where is the station?",
+                    "What is the station?",
+                    "How is the station?"
+                ],
+                correct: 0,
+                explanation: "Where is...? - стандартне питання про розташування."
+            },
+            {
+                category: "Лексика",
+                question: "Як сказати 'Де знаходиться найближчий банкомат?'",
+                options: [
+                    "Where is the nearest ATM?",
+                    "What is the nearest ATM?",
+                    "How is the nearest ATM?"
+                ],
+                correct: 0,
+                explanation: "Where is the nearest...? - стандартне питання про розташування найближчого об'єкта."
+            },
+            {
+                category: "Лексика",
+                question: "Що означає 'boarding pass'?",
+                options: [
+                    "Віза",
+                    "Паспорт",
+                    "Посадковий квиток"
+                ],
+                correct: 2,
+                explanation: "Boarding pass - це посадковий квиток для літака."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizInterval;
+
+        function updateInteractiveQuiz() {
+            const quizContainer = document.getElementById('interactive-quiz');
+            if (!quizContainer) return;
+
+            const quiz = interactiveQuizData[currentQuizIndex];
+            
+            const quizHTML = `
+                <div class="quiz-glass quiz-gradient-border">
+                    <div class="text-center">
+                        <p class="question-text">${quiz.question}</p>
+                    </div>
+                    <div>
+                        ${quiz.options.map((option, index) => `
+                            <div class="quiz-option-btn" data-index="${index}" style="animation: slide-up-fade 0.6s ease-out ${index * 0.1}s;">
+                                <div class="quiz-letter">${String.fromCharCode(65 + index)}</div>
+                                <span>${option}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            quizContainer.innerHTML = quizHTML;
+            
+            // Auto-show correct answer after 4 seconds
+            setTimeout(() => {
+                showCorrectAnswer();
+            }, 4000);
+        }
+
+        function showCorrectAnswer() {
+            const quizContainer = document.getElementById('interactive-quiz');
+            if (!quizContainer) return;
+            
+            const quiz = interactiveQuizData[currentQuizIndex];
+            const options = quizContainer.querySelectorAll('.quiz-option-btn');
+            
+            options.forEach((option, index) => {
+                const optionContent = option.querySelector('.quiz-letter');
+                
+                if (index === quiz.correct) {
+                    option.classList.add('correct');
+                    option.innerHTML = `
+                        <div class="quiz-letter">✓</div>
+                        <span>${quiz.options[index]}</span>
+                    `;
+                } else {
+                    option.classList.add('wrong');
+                    option.innerHTML = `
+                        <div class="quiz-letter">✗</div>
+                        <span>${quiz.options[index]}</span>
+                    `;
+                }
+            });
+            
+            // Add elegant explanation
+            setTimeout(() => {
+                const explanationDiv = document.createElement('div');
+                explanationDiv.className = 'quiz-explanation';
+                explanationDiv.innerHTML = `
+                    <div class="flex items-center mb-2">
+                        <div class="icon">💡</div>
+                        <span class="title">Пояснення</span>
+                    </div>
+                    <div class="text">${quiz.explanation}</div>
+                `;
+                quizContainer.appendChild(explanationDiv);
+            }, 500);
+            
+            // Move to next question after 3 seconds
+            setTimeout(() => {
+                currentQuizIndex = (currentQuizIndex + 1) % interactiveQuizData.length;
+                updateInteractiveQuiz();
+            }, 3000);
+        }
+
+        // Initialize interactive quiz when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                updateInteractiveQuiz();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

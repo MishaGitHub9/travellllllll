@@ -1,0 +1,1250 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8fafc;
+    letter-spacing: 0.015em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.hero-title, .section-title, .feature-card h3, .tense-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.hero-subtitle, .intro-subtitle, .feature-card p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #1e40af, #3730a3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #1e40af, #3730a3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4b5563;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Navigation */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Фікс для мобільної навігації */
+.lg\:hidden {
+    position: relative;
+    z-index: 1001;
+}
+
+.fixed.inset-x-0 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1002 !important;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #fbbf24;
+    color: #1f2937;
+}
+
+.btn-primary:hover {
+    background-color: #f59e0b;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #667eea;
+}
+
+/* Hero Illustration */
+.hero-illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.travel-drawing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.travel-emoji {
+    font-size: 3rem;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+.travel-emoji:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.travel-photo {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    background: none;
+    transition: none;
+    display: block;
+    margin: 0 auto;
+}
+
+.travel-photo:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Grammar Preview Section */
+.grammar-preview {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+.grammar-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.grammar-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.grammar-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #4b5563;
+}
+
+.grammar-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3b82f6;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tense-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tense-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tense-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.tense-card.active {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.tense-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.tense-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.tense-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.tense-action {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #3b82f6;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+}
+
+.tense-card:hover .tense-action {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tense-card.active .tense-action {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Features Section */
+.features {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #1f2937;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.feature-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+    background-color: #1f2937;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.quest-section {
+    padding: 4rem 0 2rem 0;
+    background: #f9fafb;
+}
+.quest-desc {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+.quest-progress {
+    text-align: center;
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+.quest-question {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1f2937;
+}
+.quest-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.quest-option-btn {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 2px solid #3b82f6;
+    background: white;
+    color: #1f2937;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.quest-option-btn:hover:not(:disabled) {
+    background: #3b82f6;
+    color: white;
+}
+.quest-option-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+.quest-feedback {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    min-height: 2.2em;
+}
+.quest-correct {
+    color: #10b981;
+    font-weight: 700;
+}
+.quest-wrong {
+    color: #ef4444;
+    font-weight: 700;
+}
+.quest-result {
+    text-align: center;
+    padding: 2rem 0;
+}
+.quest-score {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.quest-msg {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        border-top: 1px solid #e5e7eb;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-illustration {
+        gap: 2rem;
+    }
+    
+    .travel-drawing {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .travel-photo {
+        max-width: 60px;
+    }
+    
+    .grammar-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .grammar-text h2 {
+        font-size: 2rem;
+    }
+    
+    .grammar-stats {
+        justify-content: center;
+    }
+    
+    .tense-cards {
+        margin-top: 2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .travel-drawing {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .grammar-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .grammar-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .tense-cards {
+        gap: 0.5rem;
+    }
+    
+    .tense-card {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+} 
+
+@media (max-width: 600px) {
+    .quest-section {
+        padding: 2rem 0 1rem 0;
+    }
+    .quest-question {
+        font-size: 1.05rem;
+    }
+    .quest-option-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+} 
+
+.practice-hero {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
+    padding: 3rem 0 2rem 0;
+}
+.practice-hero-container {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.practice-hero-icon {
+    font-size: 3.5rem;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(59,130,246,0.08);
+    padding: 1.2rem 1.5rem;
+    color: #6366f1;
+}
+.practice-hero-content {
+    flex: 1;
+}
+.practice-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    color: #1e293b;
+}
+.practice-subtitle {
+    font-size: 1.15rem;
+    color: #475569;
+    margin-bottom: 0.5rem;
+}
+
+.practice-benefits {
+    background: #f9fafb;
+    padding: 2rem 0 1rem 0;
+}
+.benefits-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.benefit-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(59,130,246,0.06);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    flex: 1 1 0;
+    min-width: 180px;
+}
+.benefit-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+.benefit-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #2563eb;
+}
+.benefit-desc {
+    font-size: 0.98rem;
+    color: #64748b;
+}
+
+.practice-games {
+    background: #fff;
+    padding: 2.5rem 0 3rem 0;
+}
+.games-grid {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.game-card {
+    background: #f1f5f9;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(59,130,246,0.07);
+    padding: 2.2rem 2rem 2rem 2rem;
+    min-width: 290px;
+    max-width: 350px;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: box-shadow 0.2s;
+}
+.game-card:hover:not(.game-card-disabled) {
+    box-shadow: 0 8px 32px rgba(59,130,246,0.13);
+}
+.game-illustration {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+}
+.game-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+    text-align: center;
+}
+.game-desc {
+    font-size: 1.02rem;
+    color: #475569;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+.game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.game-card-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    filter: grayscale(0.2);
+}
+@media (max-width: 900px) {
+    .practice-hero-container, .benefits-grid, .games-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    .practice-hero-icon {
+        margin-bottom: 1rem;
+    }
+}
+@media (max-width: 600px) {
+    .practice-hero {
+        padding: 1.5rem 0 1rem 0;
+    }
+    .practice-title {
+        font-size: 1.3rem;
+    }
+    .practice-hero-icon {
+        font-size: 2.2rem;
+        padding: 0.7rem 1rem;
+    }
+    .benefit-card {
+        padding: 1.2rem 0.7rem;
+        min-width: 120px;
+    }
+    .game-card {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+        min-width: 180px;
+        max-width: 100%;
+    }
+}
+
+/* Додаткові покращення адаптивності для всього сайту */
+@media (max-width: 1200px) {
+    .max-w-7xl {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .max-w-7xl {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    
+    .text-6xl, .text-7xl, .text-8xl {
+        font-size: 3.5rem;
+    }
+    
+    .text-4xl {
+        font-size: 2.25rem;
+    }
+    
+    .text-3xl {
+        font-size: 1.875rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .max-w-7xl {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .text-6xl, .text-7xl, .text-8xl {
+        font-size: 2.75rem;
+    }
+    
+    .text-5xl {
+        font-size: 2.25rem;
+    }
+    
+    .text-4xl {
+        font-size: 1.875rem;
+    }
+    
+    .text-3xl {
+        font-size: 1.5rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.25rem;
+    }
+    
+    .text-xl {
+        font-size: 1.125rem;
+    }
+    
+    /* Модалі та карточки */
+    .glass, .situation-card, .quiz-glass {
+        padding: 1.5rem 1rem;
+        border-radius: 1rem;
+    }
+    
+    /* Кнопки для планшетів */
+    .btn-view, .btn-practice {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Спеціальні елементи vocabulary */
+    .situation-icon {
+        font-size: 2.5rem;
+    }
+    
+    .situation-stats {
+        padding: 0.5rem 1rem;
+    }
+    
+    /* Навігація */
+    .nav-menu {
+        padding: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .max-w-7xl {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    .text-6xl, .text-7xl, .text-8xl {
+        font-size: 2.25rem;
+        line-height: 1.1;
+    }
+    
+    .text-5xl {
+        font-size: 1.875rem;
+    }
+    
+    .text-4xl {
+        font-size: 1.5rem;
+    }
+    
+    .text-3xl {
+        font-size: 1.25rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.125rem;
+    }
+    
+    .text-xl {
+        font-size: 1rem;
+    }
+    
+    .text-lg {
+        font-size: 0.95rem;
+    }
+    
+    /* Мобільні карточки */
+    .glass, .situation-card, .quiz-glass {
+        padding: 1rem 0.75rem;
+        border-radius: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Мобільні кнопки */
+    .btn-view, .btn-practice {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        min-height: 44px;
+    }
+    
+    /* Іконки ситуацій */
+    .situation-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Спеціальні відступи для мобільних */
+    .py-20 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    .py-16 {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    
+    .py-12 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    .py-8 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .py-6 {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+    
+    /* Gap покращення */
+    .gap-8 {
+        gap: 1.5rem;
+    }
+    
+    .gap-6 {
+        gap: 1rem;
+    }
+    
+    .gap-4 {
+        gap: 0.75rem;
+    }
+    
+    .gap-3 {
+        gap: 0.5rem;
+    }
+    
+    /* Сітки для мобільних */
+    .grid-cols-1.md\:grid-cols-2.xl\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-cols-1.lg\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Hero секція для мобільних */
+    .hero-container {
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    /* Покращення читабельності */
+    p, .text-base {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .text-sm {
+        font-size: 0.8rem;
+    }
+    
+    .text-xs {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .max-w-7xl {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .text-6xl, .text-7xl, .text-8xl {
+        font-size: 1.875rem;
+        line-height: 1.1;
+    }
+    
+    .text-4xl {
+        font-size: 1.375rem;
+    }
+    
+    .text-3xl {
+        font-size: 1.125rem;
+    }
+    
+    .text-2xl {
+        font-size: 1rem;
+    }
+    
+    .text-xl {
+        font-size: 0.95rem;
+    }
+    
+    /* Екстра маленькі карточки */
+    .glass, .situation-card, .quiz-glass {
+        padding: 0.875rem 0.5rem;
+        border-radius: 0.625rem;
+    }
+    
+    /* Екстра маленькі кнопки */
+    .btn-view, .btn-practice {
+        padding: 0.625rem 0.75rem;
+        font-size: 0.8rem;
+        min-height: 40px;
+    }
+    
+    /* Іконки для дуже маленьких екранів */
+    .situation-icon {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Мінімальні відступи */
+    .py-20 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    .py-16 {
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+    
+    .py-12 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .py-8 {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+    
+    .py-6 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+/* Touch оптимізація */
+@media (hover: none) and (pointer: coarse) {
+    /* Видалення hover ефектів на touch пристроях */
+    .hover\:scale-105:hover,
+    .hover\:transform:hover,
+    .transform:hover {
+        transform: none;
+    }
+    
+    .hover\:shadow-xl:hover,
+    .hover\:shadow-lg:hover {
+        box-shadow: none;
+    }
+    
+    /* Збільшення touch targets */
+    button, .btn, .btn-view, .btn-practice, a[role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.75rem 1rem;
+    }
+    
+    /* Покращення карток для дотику */
+    .situation-card, .practice-option, .quiz-card {
+        cursor: default;
+    }
+    
+    .situation-card:hover,
+    .practice-option:hover,
+    .quiz-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    /* Scroll покращення */
+    .overflow-y-auto,
+    .modal-content {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Landscape орієнтація на мобільних */
+@media (max-width: 768px) and (orientation: landscape) {
+    .py-20 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    .py-16 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .text-6xl, .text-7xl, .text-8xl {
+        font-size: 2.5rem;
+    }
+    
+    .hero-container {
+        gap: 1rem;
+    }
+    
+    .min-h-screen {
+        min-height: 100vh;
+    }
+    
+    /* Покращення модалів в landscape */
+    .fixed.inset-0 > div {
+        max-height: 95vh;
+        margin: auto;
+    }
+}
+
+/* Accessibility покращення */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode підтримка (опціонально) */
+@media (prefers-color-scheme: dark) {
+    .glass {
+        background: rgba(255, 255, 255, 0.03);
+    }
+    
+    .text-white\/70 {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Vocabulary specific responsive fixes */
+@media (max-width: 768px) {
+    .situation-card {
+        padding: 1.5rem 1rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .situation-card .situation-icon {
+        font-size: 2.5rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .situation-card h3 {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .situation-card p {
+        font-size: 0.875rem !important;
+    }
+    
+    .situation-stats {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    .btn-view, .btn-practice {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.875rem !important;
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 640px) {
+    .situation-card {
+        padding: 1.25rem 0.75rem !important;
+    }
+    
+    .situation-card .situation-icon {
+        font-size: 2rem !important;
+        margin-bottom: 0.75rem;
+    }
+    
+    .situation-card h3 {
+        font-size: 1.125rem !important;
+    }
+    
+    .situation-card p {
+        font-size: 0.8rem !important;
+    }
+    
+    .btn-view, .btn-practice {
+        padding: 0.625rem 0.875rem !important;
+        font-size: 0.8rem !important;
+    }
+} 

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика - Travelingo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+        }
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-30px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateX(0); filter: blur(0px); }
+        }
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(30px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateX(0); filter: blur(0px); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
+        .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+        .delay-900 { animation-delay: 0.9s; }
+        .delay-1000 { animation-delay: 1.0s; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-border {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3));
+            padding: 1px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hidden { display: none; }
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body class="bg-black font-sans antialiased text-white overflow-x-hidden" style="font-family: 'Inter', sans-serif;">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)]"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">T</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-800">Travelingo</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Головна</a>
+                    <a href="tenses.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Часи</a>
+                    <a href="vocabulary.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Словник</a>
+                    <a href="practice.html" class="text-indigo-600 hover:text-indigo-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-indigo-600">Практика</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 p-2 rounded-md">
+                        <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-lg transform -translate-y-full transition-transform duration-300 ease-in-out">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Головна</a>
+                <a href="tenses.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Часи</a>
+                <a href="vocabulary.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Словник</a>
+                <a href="practice.html" class="bg-indigo-50 border-indigo-500 text-indigo-700 block px-3 py-2 rounded-md text-base font-medium border-l-4">Практика</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="relative z-10">
+        <!-- Practice Hero Section -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+            <div class="text-center mb-16 opacity-0 animate-fade-in-up delay-300" style="opacity: 1;">
+                <div class="gradient-border rounded-3xl mb-8 inline-block">
+                    <div class="bg-black rounded-3xl px-4 py-2">
+                        <div class="flex items-center gap-2 text-sm font-medium">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span class="text-white/80">Практика англійської</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="sm:text-6xl xl:text-7xl leading-none text-5xl font-medium tracking-tighter mb-8">
+                    <span class="block text-white">🎲 Практика</span>
+                    <span class="block gradient-text">у форматі гри</span>
+                </h1>
+
+                <p class="text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Тут ви знайдете інтерактивні квести, тести та ігри, які допоможуть закріпити граматику та лексику для подорожей. Вчіться із задоволенням!
+                </p>
+            </div>
+        </section>
+        <!-- Benefits Section -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 opacity-0 animate-fade-in-up delay-500" style="opacity: 1;">
+                <div class="glass rounded-3xl p-8 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-500 transform hover:scale-[1.02] group">
+                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl">⚡️</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 tracking-tight">Швидко</h3>
+                    <p class="text-white/70 leading-relaxed">Короткі інтерактивні вправи для щоденної практики</p>
+                </div>
+
+                <div class="glass rounded-3xl p-8 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-500 transform hover:scale-[1.02] group">
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl">🎯</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 tracking-tight">По суті</h3>
+                    <p class="text-white/70 leading-relaxed">Тільки те, що реально знадобиться у подорожі</p>
+                </div>
+
+                <div class="glass rounded-3xl p-8 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-500 transform hover:scale-[1.02] group">
+                    <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl">🏆</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 tracking-tight">З мотивацією</h3>
+                    <p class="text-white/70 leading-relaxed">Прогрес, досягнення та ігрові сценарії</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 opacity-0 animate-fade-in-up delay-700" style="opacity: 1;">
+                <div class="glass rounded-3xl p-8 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-500 transform hover:scale-[1.02] group">
+                    <div class="text-6xl mb-8">🗺️</div>
+                    <div class="game-content">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Міні-квест: Подорож до Лондона</h3>
+                        <p class="text-white/70 mb-8 leading-relaxed">Пройдіть інтерактивну історію та потренуйте всі три часи у реальних ситуаціях подорожі!</p>
+                        <button class="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium rounded-2xl transition-all duration-300 shadow-xl shadow-indigo-500/25 transform hover:scale-105" id="start-quest-btn">
+                            Почати квест
+                        </button>
+                        <div id="quest-container"></div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-8 backdrop-blur-xl border border-white/10 opacity-50">
+                    <div class="text-6xl mb-8">🔒</div>
+                    <div class="game-content">
+                        <h3 class="text-2xl font-semibold text-white mb-4">Скоро: Вікторина "Travel Quiz"</h3>
+                        <p class="text-white/70 leading-relaxed">Буде доступно найближчим часом. Слідкуйте за оновленнями!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="border-t border-white/10 mt-32">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+                <div class="text-center">
+                    <p class="text-white/60">&copy; 2024 Travelingo. Вивчення англійської для подорожей.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/quest.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            // Toggle menu visibility
+            mobileMenu.classList.toggle('-translate-y-full');
+            mobileMenu.classList.toggle('translate-y-0');
+            
+            // Toggle icons
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const hamburgerIcon = document.getElementById('hamburger-icon');
+                const closeIcon = document.getElementById('close-icon');
+                
+                mobileMenu.classList.add('-translate-y-full');
+                mobileMenu.classList.remove('translate-y-0');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.opacity-0').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 

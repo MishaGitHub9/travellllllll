@@ -1,0 +1,348 @@
+/* Стилі для практикування */
+
+.practice-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.practice-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+.practice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.practice-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.practice-progress {
+    background: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.practice-score {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.practice-content {
+    margin-bottom: 30px;
+}
+
+.question-container h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.sentence-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+}
+
+.sentence-prefix,
+.sentence-suffix {
+    font-size: 1.1rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.word-input {
+    padding: 12px 16px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    min-width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.word-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.word-input:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+.hint-container {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+}
+
+.hint {
+    font-weight: 600;
+    color: #856404;
+}
+
+.hint-text {
+    color: #856404;
+    font-style: italic;
+}
+
+.practice-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.practice-actions .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.check-answer-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border: none;
+    color: white;
+}
+
+.check-answer-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.skip-btn {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    border: none;
+    color: white;
+}
+
+.skip-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.practice-results {
+    text-align: center;
+    padding: 20px;
+}
+
+.practice-results h3 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.results-summary {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 2px solid #e9ecef;
+}
+
+.results-summary p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #495057;
+}
+
+.correct-answers {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.total-answers {
+    color: #495057;
+    font-weight: 600;
+}
+
+.percentage {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.results-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.results-actions .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.close-btn {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    border: none;
+    color: white;
+}
+
+.close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .practice-container {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .practice-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .practice-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .sentence-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .word-input {
+        min-width: 150px;
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .practice-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .practice-actions .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .results-actions .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Стилі для станів відповіді */
+.word-input.correct {
+    border-color: #28a745;
+    background-color: #d4edda;
+}
+
+.word-input.incorrect {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+/* Покращення доступності */
+.practice-modal:focus {
+    outline: none;
+}
+
+.word-input:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+.btn:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+} 
