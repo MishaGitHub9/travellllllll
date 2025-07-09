@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словник - Travelingo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+        }
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-30px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateX(0); filter: blur(0px); }
+        }
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(30px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateX(0); filter: blur(0px); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
+        .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+        .delay-900 { animation-delay: 0.9s; }
+        .delay-1000 { animation-delay: 1.0s; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-border {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3));
+            padding: 1px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hidden { display: none; }
+        
+        .situation-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .situation-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+        }
+        
+        .situation-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        
+        .situation-stats {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-view {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-practice {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-practice:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .btn-view, .btn-practice {
+                min-height: 52px;
+                font-size: 0.95rem;
+                padding: 14px 18px;
+                border: 2px solid transparent;
+                transition: all 0.2s ease;
+            }
+            
+            .situation-card {
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+            }
+            
+            .situation-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-view:active, .btn-practice:active {
+                transform: scale(0.92);
+                background: rgba(99, 102, 241, 0.9) !important;
+                border-color: rgba(99, 102, 241, 0.5);
+            }
+            
+            .btn-practice:active {
+                background: rgba(255, 255, 255, 0.25) !important;
+                border-color: rgba(255, 255, 255, 0.4);
+            }
+            
+            /* Larger tap targets for mobile */
+            .btn-view, .btn-practice {
+                font-weight: 600;
+                letter-spacing: 0.025em;
+            }
+            
+            /* Better spacing on mobile */
+            .flex.gap-3 {
+                gap: 0.5rem;
+            }
+        }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .btn-view, .btn-practice {
+                min-height: 56px;
+                font-size: 1rem;
+                padding: 16px 20px;
+            }
+            
+            .situation-card {
+                padding: 1rem;
+            }
+            
+            /* Stack buttons vertically on very small screens */
+            .flex.gap-3 {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+        
+        /* Touch improvements for all devices */
+        .btn-view, .btn-practice {
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-drag: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Add touch feedback */
+        .btn-view::before, .btn-practice::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .btn-view:active::before, .btn-practice:active::before {
+            width: 200px;
+            height: 200px;
+        }
+        
+        /* Disable zoom on double tap */
+        .situation-card, .btn-view, .btn-practice {
+            touch-action: manipulation;
+        }
+        
+        /* Mobile device optimizations */
+        body.mobile-device {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        body.mobile-device .situation-card {
+            will-change: transform;
+        }
+        
+        body.mobile-device .btn-view,
+        body.mobile-device .btn-practice {
+            will-change: transform, background-color;
+        }
+        
+        /* Improve scrolling on mobile */
+        @media (max-width: 768px) {
+            body {
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Better grid on mobile */
+            .grid-cols-1 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Portrait orientation adjustments */
+        @media (max-width: 480px) and (orientation: portrait) {
+            h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.1 !important;
+            }
+            
+            .text-xl {
+                font-size: 1rem !important;
+                margin-bottom: 2rem !important;
+            }
+        }
+        
+        /* Landscape mobile adjustments */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .pb-20 {
+                padding-bottom: 2rem !important;
+            }
+            
+            .situation-card {
+                padding: 1rem !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body class="bg-black font-sans antialiased text-white overflow-x-hidden" style="font-family: 'Poppins', sans-serif;">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)]"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">T</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-800">Travelingo</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Головна</a>
+                    <a href="tenses.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Часи</a>
+                    <a href="vocabulary.html" class="text-indigo-600 hover:text-indigo-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-indigo-600">Словник</a>
+                    <a href="practice.html" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Практика</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 p-2 rounded-md">
+                        <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-lg transform -translate-y-full transition-transform duration-300 ease-in-out">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Головна</a>
+                <a href="tenses.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Часи</a>
+                <a href="vocabulary.html" class="bg-indigo-50 border-indigo-500 text-indigo-700 block px-3 py-2 rounded-md text-base font-medium border-l-4">Словник</a>
+                <a href="practice.html" class="text-gray-700 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Практика</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="relative z-10">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+            <div class="text-center mb-16 opacity-0 animate-fade-in-up delay-300" style="opacity: 1;">
+                <div class="gradient-border rounded-3xl mb-8 inline-block">
+                    <div class="bg-black rounded-3xl px-4 py-2">
+                        <div class="flex items-center gap-2 text-sm font-medium">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span class="text-white/80">Словник для подорожей</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="sm:text-6xl xl:text-7xl leading-none text-5xl font-bold tracking-tighter mb-8">
+                    <span class="block text-white">📚 Словник</span>
+                    <span class="block gradient-text">для подорожей</span>
+                </h1>
+
+                <p class="text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Вивчайте слова за ситуаціями - від планування подорожі до повернення додому
+                </p>
+
+                <!-- Stats -->
+                <div class="flex justify-center items-center gap-8 mb-10">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-indigo-400">14</div>
+                        <div class="text-white/60 text-sm">Ситуацій</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-purple-400">280+</div>
+                        <div class="text-white/60 text-sm">Слів</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-pink-400">420+</div>
+                        <div class="text-white/60 text-sm">Фраз</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Situations Grid -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                
+                <!-- 1. Планування подорожі -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-100" style="opacity: 1;" data-situation="planning">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">📋</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Планування подорожі</h3>
+                        <p class="text-white/70 text-sm">Від ідеї до бронювання</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">25 слів • 15 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation="planning">
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation="planning">
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. В аеропорту -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-200" style="opacity: 1;" data-situation="airport">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">✈️</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">В аеропорту</h3>
+                        <p class="text-white/70 text-sm">Реєстрація та посадка</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">22 слова • 18 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation="airport">
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation="airport">
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. В готелі -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-300" style="opacity: 1;" data-situation="hotel">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🏨</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">В готелі</h3>
+                        <p class="text-white/70 text-sm">Заселення та сервіс</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">28 слів • 20 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation="hotel">
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation="hotel">
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. В ресторані -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-400" style="opacity: 1;" data-situation="restaurant">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🍽️</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">В ресторані</h3>
+                        <p class="text-white/70 text-sm">Замовлення та їжа</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">30 слів • 25 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='restaurant'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='restaurant'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 5. Транспорт -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-500" style="opacity: 1;" data-situation="transport">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🚌</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Транспорт</h3>
+                        <p class="text-white/70 text-sm">Автобуси, поїзди, таксі</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">24 слова • 16 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='transport'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='transport'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 6. Покупки -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-600" style="opacity: 1;" data-situation="shopping">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🛍️</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Покупки</h3>
+                        <p class="text-white/70 text-sm">Магазини та сувеніри</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">26 слів • 22 фрази</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='shopping'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='shopping'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 7. Орієнтування в місті -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-700" style="opacity: 1;" data-situation="directions">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🗺️</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Орієнтування</h3>
+                        <p class="text-white/70 text-sm">Навігація та напрямки</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">20 слів • 18 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='directions'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='directions'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 8. Медична допомога -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-800" style="opacity: 1;" data-situation="medical">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🏥</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Медична допомога</h3>
+                        <p class="text-white/70 text-sm">Аптека та лікар</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">18 слів • 12 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='medical'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='medical'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 9. Екскурсії та розваги -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-900" style="opacity: 1;" data-situation="entertainment">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🎭</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Розваги</h3>
+                        <p class="text-white/70 text-sm">Екскурсії та заходи</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">23 слова • 19 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='entertainment'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='entertainment'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 10. Банк та гроші -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-1000" style="opacity: 1;" data-situation="money">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">💳</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Банк та гроші</h3>
+                        <p class="text-white/70 text-sm">Обмін валют та платежі</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">16 слів • 14 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='money'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='money'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 11. Комунікація -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-300" style="opacity: 1;" data-situation="communication">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">📱</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Комунікація</h3>
+                        <p class="text-white/70 text-sm">Телефон та інтернет</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">19 слів • 15 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='communication'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='communication'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 12. Надзвичайні ситуації -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-400" style="opacity: 1;" data-situation="emergency">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🚨</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Надзвичайні ситуації</h3>
+                        <p class="text-white/70 text-sm">Допомога та безпека</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">15 слів • 10 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='emergency'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='emergency'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 13. Погода та час -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-500" style="opacity: 1;" data-situation="weather">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🌤️</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Погода та час</h3>
+                        <p class="text-white/70 text-sm">Розмови про погоду</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">21 слово • 16 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='weather'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='weather'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 14. Повернення додому -->
+                <div class="situation-card rounded-3xl p-8 opacity-0 animate-fade-in-up delay-600" style="opacity: 1;" data-situation="departure">
+                    <div class="text-center mb-6">
+                        <div class="situation-icon">🎒</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Повернення</h3>
+                        <p class="text-white/70 text-sm">Виїзд та митниця</p>
+                    </div>
+                    <div class="situation-stats rounded-2xl px-4 py-3 mb-6 text-center">
+                        <div class="text-white/90 font-semibold">17 слів • 13 фраз</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-view flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="view" data-situation='departure'>
+                            📖 Переглянути слова
+                        </button>
+                        <button class="btn-practice flex-1 px-4 py-3 rounded-2xl font-semibold" data-action="practice" data-situation='departure'>
+                            🎯 Практикувати
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/vocabulary.js"></script>
+    
+    <!-- Emergency fallback for mobile -->
+    <script>
+        // Emergency function definitions
+        window.emergencyViewWords = function(situation) {
+            console.log('🚨 Emergency viewWords called for:', situation);
+            // Force reload of vocabulary.js and retry
+            const script = document.createElement('script');
+            script.src = 'js/vocabulary.js?t=' + Date.now();
+            script.onload = function() {
+                setTimeout(() => {
+                    if (window.viewWords) {
+                        window.viewWords(situation);
+                    } else {
+                        alert('Помилка завантаження. Перезавантажте сторінку.');
+                    }
+                }, 500);
+            };
+            document.head.appendChild(script);
+        };
+        
+        window.emergencyPracticeWords = function(situation) {
+            console.log('🚨 Emergency practiceWords called for:', situation);
+            // Force reload of vocabulary.js and retry
+            const script = document.createElement('script');
+            script.src = 'js/vocabulary.js?t=' + Date.now();
+            script.onload = function() {
+                setTimeout(() => {
+                    if (window.practiceWords) {
+                        window.practiceWords(situation);
+                    } else {
+                        alert('Помилка завантаження. Перезавантажте сторінку.');
+                    }
+                }, 500);
+            };
+            document.head.appendChild(script);
+        };
+    </script>
+    
+    <script>
+        // Mobile-optimized event listeners for vocabulary buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Setting up mobile-optimized vocabulary button listeners...');
+            
+            // Detect mobile device
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                           window.innerWidth <= 768;
+            
+            if (isMobile) {
+                console.log('📱 Mobile device detected - enabling mobile optimizations');
+                document.body.classList.add('mobile-device');
+            }
+            
+            // Handle both onclick and data-attribute buttons
+            function setupButtonListeners() {
+                // Data-attribute buttons (new approach)
+                document.querySelectorAll('[data-action]').forEach(btn => {
+                    const action = btn.dataset.action;
+                    const situation = btn.dataset.situation;
+                    
+                    console.log(`📌 Setting up ${action} button for ${situation}`);
+                    
+                    // Remove existing listeners to prevent duplicates
+                    btn.removeEventListener('click', btn._vocabularyClickHandler);
+                    btn.removeEventListener('touchend', btn._vocabularyTouchHandler);
+                    
+                    // Main click handler
+                    btn._vocabularyClickHandler = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log(`🔥 Button clicked: ${action} - ${situation}`);
+                        
+                        // Add visual feedback
+                        btn.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            btn.style.transform = '';
+                        }, 150);
+                        
+                        // Call function with small delay to ensure visual feedback shows
+                        setTimeout(() => {
+                                                    if (action === 'view' && window.viewWords) {
+                            window.viewWords(situation);
+                        } else if (action === 'practice' && window.practiceWords) {
+                            window.practiceWords(situation);
+                        } else {
+                            console.error(`Function not available: ${action}Words`);
+                            
+                            // Try emergency functions first
+                            if (action === 'view' && window.emergencyViewWords) {
+                                console.log('🚨 Using emergency viewWords');
+                                window.emergencyViewWords(situation);
+                            } else if (action === 'practice' && window.emergencyPracticeWords) {
+                                console.log('🚨 Using emergency practiceWords');
+                                window.emergencyPracticeWords(situation);
+                            } else {
+                                // Try to reload and retry
+                                setTimeout(() => {
+                                    if (action === 'view' && window.viewWords) {
+                                        window.viewWords(situation);
+                                    } else if (action === 'practice' && window.practiceWords) {
+                                        window.practiceWords(situation);
+                                    } else {
+                                        // Last resort - reload page
+                                        if (confirm('Функція недоступна. Перезавантажити сторінку?')) {
+                                            window.location.reload();
+                                        }
+                                    }
+                                }, 1000);
+                            }
+                        }
+                        }, 50);
+                    };
+                    
+                    // Touch handler for mobile
+                    if (isMobile) {
+                        btn._vocabularyTouchHandler = function(e) {
+                            e.preventDefault();
+                            btn._vocabularyClickHandler(e);
+                        };
+                        btn.addEventListener('touchend', btn._vocabularyTouchHandler, { passive: false });
+                    }
+                    
+                    // Standard click handler
+                    btn.addEventListener('click', btn._vocabularyClickHandler);
+                    
+                    // Prevent default touch behaviors
+                    if (isMobile) {
+                        btn.addEventListener('touchstart', function(e) {
+                            e.stopPropagation();
+                        }, { passive: true });
+                    }
+                });
+                
+                // Onclick buttons (fallback)
+                document.querySelectorAll('[onclick*="viewWords"], [onclick*="practiceWords"]').forEach(btn => {
+                    const onclick = btn.getAttribute('onclick');
+                    if (!onclick) return;
+                    
+                    console.log('📌 Found onclick button:', onclick);
+                    
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const viewMatch = onclick.match(/viewWords\('([^']+)'\)/);
+                        const practiceMatch = onclick.match(/practiceWords\('([^']+)'\)/);
+                        
+                        if (viewMatch && window.viewWords) {
+                            console.log('🔥 Calling viewWords:', viewMatch[1]);
+                            window.viewWords(viewMatch[1]);
+                        } else if (practiceMatch && window.practiceWords) {
+                            console.log('🔥 Calling practiceWords:', practiceMatch[1]);
+                            window.practiceWords(practiceMatch[1]);
+                        } else {
+                            console.error('Function not available for:', onclick);
+                        }
+                    });
+                });
+            }
+            
+            // Setup immediately and also retry after delay
+            setupButtonListeners();
+            setTimeout(setupButtonListeners, 1000);
+            setTimeout(setupButtonListeners, 3000);
+            
+            // Debug function availability every 2 seconds for mobile
+            if (isMobile) {
+                const debugInterval = setInterval(() => {
+                    console.log('📊 Function status check:', {
+                        viewWords: typeof window.viewWords,
+                        practiceWords: typeof window.practiceWords,
+                        emergencyViewWords: typeof window.emergencyViewWords,
+                        emergencyPracticeWords: typeof window.emergencyPracticeWords
+                    });
+                    
+                    // Stop checking after functions are available
+                    if (typeof window.viewWords === 'function' && typeof window.practiceWords === 'function') {
+                        clearInterval(debugInterval);
+                        console.log('✅ All functions loaded successfully');
+                    }
+                }, 2000);
+                
+                // Stop debug after 30 seconds
+                setTimeout(() => clearInterval(debugInterval), 30000);
+            }
+            
+            // Re-setup on orientation change (mobile)
+            if (isMobile) {
+                window.addEventListener('orientationchange', function() {
+                    setTimeout(setupButtonListeners, 500);
+                });
+            }
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            // Toggle menu visibility
+            mobileMenu.classList.toggle('-translate-y-full');
+            mobileMenu.classList.toggle('translate-y-0');
+            
+            // Toggle icons
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const hamburgerIcon = document.getElementById('hamburger-icon');
+                const closeIcon = document.getElementById('close-icon');
+                
+                mobileMenu.classList.add('-translate-y-full');
+                mobileMenu.classList.remove('translate-y-0');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html> 
